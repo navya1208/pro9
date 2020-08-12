@@ -1,0 +1,15 @@
+h1{
+  color:purple;
+  font-weight: bolder;
+  font-style: italic;
+
+}
+h3{
+  color:palevioletred;
+  font-style: italic;
+}
+
+img{
+  height: 50%;
+  width:50%;
+}
