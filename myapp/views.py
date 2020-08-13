@@ -60,9 +60,11 @@ def multi(request):
 from django.core.files.storage import FileSystemStorage
 
 def img_upld(request):
+    file_url=False
     if request.method=="POST" and request.FILES:
         image=request.FILES['sam']
         fs=FileSystemStorage()
-        fs.save(image.name,image)
-                
-    return render(request,"imgupload.html")
+        file=fs.save(image.name,image)
+        file_url=fs.url(file)                
+    return render(request,"imgupload.html",context={'file_url':file_url})
+    
