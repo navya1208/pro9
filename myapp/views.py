@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 
 # Create your views here.
 from django.http import HttpResponse
@@ -46,7 +46,8 @@ def register(request):
             gender="Male"
         send_mail("Thanks For Registration","hello Mr./Ms.{} {}\n Thanks for Registering".format(first_name,last_name),
         "akshay.python@gmail.com",[email,],fail_silently=True)
-        return HttpResponse("{}<br>{}<br>{}<br>{}<br>{}<br>{}<br>{}<br>{}<br>{}<br>".format(first_name,last_name,email,password,phno,gender,date,month,year))
+        # return HttpResponse("{}<br>{}<br>{}<br>{}<br>{}<br>{}<br>{}<br>{}<br>{}<br>".format(first_name,last_name,email,password,phno,gender,date,month,year))
+        return redirect("home")
     return render(request,"myapp/register.html")
 
 
@@ -56,6 +57,8 @@ def multi(request):
         languages=request.POST.getlist("language")
         return HttpResponse("<h1>{}{}<h1>".format(foods,languages))
     return render(request,'multiselect.html')
+
+#uploading and displaying the uploaded image
 
 from django.core.files.storage import FileSystemStorage
 
@@ -78,6 +81,14 @@ def img_display(request):
         file_url=fs.url(file)
     return render(request,"imgdisplay.html",context={'file_url':file_url})
 
+def upload(request):
+    return render(request,"upload.html")
+from myapp.utilities import store_image
+def display(request):
+    file_url=False
+    if request.method=="POST" and request.FILES:
+        image1=request.FILES.get('sam1')
+        image2=request.FILES.get('sam2')
+        file_urls=map(store_image,[image1,image2])
+    return render(request,"display.html",context={'file_urls':file_urls})
 
-
-    
