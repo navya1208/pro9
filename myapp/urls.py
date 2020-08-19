@@ -13,6 +13,8 @@ urlpatterns = [
     path('imgdisplay/',views.img_display,name="img_disp"),
     path('upload/',views.upload,name="upload"),
     path('display/',views.display,name="display"),
+    path('builtin/',views.builtin,name='builtin')
+
 
 
 ]
