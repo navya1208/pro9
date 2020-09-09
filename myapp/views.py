@@ -95,5 +95,5 @@ def display(request):
 from myapp import forms
 def builtin(request):
     form=forms.SampleForm()
-    return render(request,"builtin.html",{'form':form})
+    return render(request,'builtin.html',{'form':form})
     

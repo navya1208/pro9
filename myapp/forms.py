@@ -15,3 +15,7 @@ class SampleForm(forms.Form):
   birth_month=forms.ChoiceField(choices=choices_month,required=True,label="Birth Month")
   birth_year=forms.ChoiceField(choices=choices_year,required=True,label="Birth Year")
   Gender=forms.ChoiceField(choices=[('Male','Male'),('Female','Female'),('other','other')],widget=forms.RadioSelect)
+  Image=forms.ImageField(required=True,label='Profile Pic')
+  Prog_Languages=forms.MultipleChoiceField(choices=[('C','C'),('C++','C++'),('C#','C#'),('Python','Python'),('Java','Java'),('Ruby','Ruby')],widget=forms.CheckboxSelectMultiple)
+  Languages=forms.MultipleChoiceField(choices=[('Telugu','Telugu'),('English','English'),('Kanada','Kanada')],widget=forms.CheckboxSelectMultiple)
+

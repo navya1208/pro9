@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'myapp',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -79,13 +80,37 @@ WSGI_APPLICATION = 'samp9.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # }
+
+
+    # 'default':{
+    #     'ENGINE':'django.db.backends.mysql',
+    #     'NAME':'mydb',
+    #     'USER':'root',
+    #     'PASSWORD':'navya@08',
+    #     'HOST':'localhost',
+    #     'PORT':3306,
+    # }
+
+     'default':{
+         'ENGINE':'django.db.backends.postgresql',
+         'NAME':'mydb',
+         'USER':'postgres',
+         'PASSWORD':'navya@08',
+         'HOST':'localhost',
+         'PORT':5432,
+     }
+
+
+
 }
 
-
+import pymysql
+pymysql.install_as_MySQLdb()
+pymysql.version_info=(1, 3, 13, "final", 0)
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
@@ -132,6 +157,7 @@ STATICFILES_DIRS=[
 MEDIA_URL='/media/'
 MEDIA_ROOT=MEDIA_DIR
 
+CRISPY_TEMPLATE_PACK='bootstrap4'
 
 EMAIL_HOST="smtp.gmail.com"
 EMAIL_PORT=465
